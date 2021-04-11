@@ -119,7 +119,8 @@ Music 🎶
 Others 🛡
 - ${PREFIX}help - ${PREFIX}ping
 - ${PREFIX}prefix -${PREFIX}uptime
-- ${PREFIX}lock - ${PREFIX} roles
+- ${PREFIX}lock - ${PREFIX}roles
+-${PREFIX}avatar - 
 \`
 ** Links ** <a:emoji_6:827091544556568579>
 **[   SUPPORT  ](https://discord.gg/58RbVj9HtJ)** -  [   INVITE   ](https://discord.com/api/oauth2/authorize?client_id=828237426744623174&permissions=8&scope=bot) -
@@ -256,23 +257,5 @@ Locked By : <@${message.author.id}>
     message.channel.send(lock);
   }
 });
-
-if(message.content.startsWith(`${prefix}about`)){
-    //define saymsg
-    const saymsg = message.content.slice(Number(prefix.length) + 5)
-    //define embed
-     message.react("<a<a:setting:813404135181385759>813404135181385759>").catch(console.error);
-    const embed = new Discord.MessageEmbed()
-    .setColor("RANDOM")
-    .setFooter("By Arbele")
-    .setThumbnail(message.author.avatarURL({dynamic: "true"}))
-      .addField('Servers', `\`${client.guilds.cache.size}\``, true)
-      .addField('Channels', `\`${client.channels.cache.size}\``, true)
-      .addField('Users', `\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\``, true)
-      .addField('My Name' , `\`${client.user.tag}\`` , true)
-      .addField('My ID' , `\`${client.user.id}\`` , true)
-      .addField('My Ping' , `\`${client.ws.ping}\`` , true)
-    //send the Message
-    message.author.send(embed)
-  }
-
+//////////
+///////
