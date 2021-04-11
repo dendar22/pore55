@@ -6,7 +6,7 @@ const db = require('quick.db');
 const { TOKEN, PREFIX, AVATARURL, BOTNAME, } = require(`./config.json`);
 const figlet = require("figlet");
 const client = new Client({ disableMentions: `` , partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
-client.login('ODI4MjM3NDI2NzQ0NjIzMTc0.YGmqNg.09SHljgZlQkHztrSg6W725GT_8o');
+client.login('ODI5MDQzODQwNzE0NDA3OTM2.YGyZPg.T9TEv4uFYaU_y8nyCKgVxtXGGFo');
 client.commands = new Collection();
 client.setMaxListeners(0);
 client.prefix = PREFIX;
@@ -119,7 +119,7 @@ Music 🎶
 Others 🛡
 - ${PREFIX}help - ${PREFIX}ping
 - ${PREFIX}prefix -${PREFIX}uptime
-- ${PREFIX}lock - ${PREFIX}help roles
+- ${PREFIX}lock - ${PREFIX} roles
 \`
 ** Links ** <a:emoji_6:827091544556568579>
 **[   SUPPORT  ](https://discord.gg/58RbVj9HtJ)** -  [   INVITE   ](https://discord.com/api/oauth2/authorize?client_id=828237426744623174&permissions=8&scope=bot) -
