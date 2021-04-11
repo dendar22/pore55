@@ -276,8 +276,3 @@ if(message.content.startsWith(`${prefix}about`)){
     message.author.send(embed)
   }
 
-//////
-
-//////////
-///////////
-
