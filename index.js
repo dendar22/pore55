@@ -257,48 +257,7 @@ Locked By : <@${message.author.id}>
   }
 });
 
-client.on("message", msg => {
- if (msg.content.startsWith(prefix + "mute")) {
-  var bawan = "kurdfam"
-   var muteRole = msg.guild.roles.cache.find(role => role.name.toLowerCase().includes("muted"));
-    var muteUser = msg.mentions.members.first();
-    var muteReason = msg.content.slice(prefix.length + 27);
-    if (!msg.member.hasPermission("MANAGE_MESSAGES")) return msg.channel.send("pewist ba role a bo anjamdane amkara");
-    if (!muteUser) return msg.channel.send("kasek mention bka");
- if (!muteRole) return msg.channel.send("rolek ba nawe muted bwny niya tkaya drwsty bka");
-  if (!msg.guild.member(client.user.id).hasPermission("MANAGE_ROLES")) return msg.channel.send("sarata rolem bare inja bakarm hena");
-     
-   
-    var muteEmbed = new Discord.MessageEmbed() 
-    .setTitle("Mute")
-    .addField("Muted user", muteUser)
-    .setFooter(`Muted by ${msg.author.tag}`)
-    .setTimestamp()
-    muteUser.roles.add(muteRole);
-    msg.channel.send(muteEmbed);
-    
-  }
-})
-
 //////
 
 //////////
-
-client.on("message", async message => {
-  if (message.content.toLowerCase() === prefix + "profile") {
-    message.channel.startTyping();
-    setTimeout(() => {
-      message.channel.stopTyping();
-    }, Math.random() * (1 - 3) + 1 * 200).then(
-      message.channel.send({
-        files: [
-          {
-            name: "prfoilebycutie.png",
-            attachment: `https://api.probot.io/profile/${message.author.id}`
-          }
-        ]
-      })
-    );
-  }
-});
 ///////////
