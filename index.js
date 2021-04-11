@@ -257,26 +257,28 @@ Locked By : <@${message.author.id}>
   }
 });
 
-module.exports = {
-   name: "unlock",
-   description: "Unlocks a Channel",
-   run: async(client, message, args) => {
-   if (!message.member.hasPermission('MANAGE_SERVER', 'MANAGE_CHANNELS')) {
-   return message.channel.send("You don't have enough Permissions")
-   }
-   message.channel.overwritePermissions([
-     {
-        id: message.guild.id,
-        null : ['SEND_MESSAGES'],
-     },
-    ],);
-   const embed = new Discord.MessageEmbed()
-   .setTitle("Channel Updates")
-   .setDescription(`🔓 ${message.channel}  has been Unlocked`)
-   .setColor("RANDOM");
-   await message.channel.send(embed);
-   message.delete();
-}
+client.on("message", msg => {
+ if (msg.content.startsWith(prefix + "mute")) {
+  var bawan = "kurdfam"
+   var muteRole = msg.guild.roles.cache.find(role => role.name.toLowerCase().includes("muted"));
+    var muteUser = msg.mentions.members.first();
+    var muteReason = msg.content.slice(prefix.length + 27);
+    if (!msg.member.hasPermission("MANAGE_MESSAGES")) return msg.channel.send("pewist ba role a bo anjamdane amkara");
+    if (!muteUser) return msg.channel.send("kasek mention bka");
+ if (!muteRole) return msg.channel.send("rolek ba nawe muted bwny niya tkaya drwsty bka");
+  if (!msg.guild.member(client.user.id).hasPermission("MANAGE_ROLES")) return msg.channel.send("sarata rolem bare inja bakarm hena");
+     
+   
+    var muteEmbed = new Discord.MessageEmbed() 
+    .setTitle("Mute")
+    .addField("Muted user", muteUser)
+    .setFooter(`Muted by ${msg.author.tag}`)
+    .setTimestamp()
+    muteUser.roles.add(muteRole);
+    msg.channel.send(muteEmbed);
+    
+  }
+})
 
 //////
 
