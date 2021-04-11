@@ -257,83 +257,27 @@ Locked By : <@${message.author.id}>
   }
 });
 
+if(message.content.startsWith(`${prefix}about`)){
+    //define saymsg
+    const saymsg = message.content.slice(Number(prefix.length) + 5)
+    //define embed
+     message.react("<a<a:setting:813404135181385759>813404135181385759>").catch(console.error);
+    const embed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setFooter("By Arbele")
+    .setThumbnail(message.author.avatarURL({dynamic: "true"}))
+      .addField('Servers', `\`${client.guilds.cache.size}\``, true)
+      .addField('Channels', `\`${client.channels.cache.size}\``, true)
+      .addField('Users', `\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\``, true)
+      .addField('My Name' , `\`${client.user.tag}\`` , true)
+      .addField('My ID' , `\`${client.user.id}\`` , true)
+      .addField('My Ping' , `\`${client.ws.ping}\`` , true)
+    //send the Message
+    message.author.send(embed)
+  }
+
 //////
 
 //////////
 ///////////
-client.on("message", async (message,target)  => {
-if(message.content.startsWith(prefix+"userinfo")) {
 
-
-          
-  
-  
-  if(message.author.bot) return;
-if(!message.channel.guild) return;
-
- 
-let args = message.content.split(" ").slice(1);
-
-const member = message.mentions.members.last() || message.guild.members.cache.get(target) || message.member;
-
-    if (!member) {
-      return message.channel.send(":x: Unable to find this person!")
-    }
-    
-
-    
-    let badges = await member.user.flags
-    badges = await badges.toArray();
-
-    let newbadges = [];
-    badges.forEach(m => {
-      newbadges.push(m.replace("_", " "))
-    })
-
-    let embed = new discord.MessageEmbed()
-      .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
-
-    
-    let array = []
-    if (member.user.presence.activities.length) {
-
-      let data = member.user.presence.activities;
-
-      for (let i = 0; i < data.length; i++) {
-        let name = data[i].name || "None"
-        let xname = data[i].details || "None"
-        let zname = data[i].state || "None"
-        let type = data[i].type
-
-        array.push(`**${type}** : \`${name} : ${xname} : ${zname}\``)
-
-        if (data[i].name === "Spotify") {
-          embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`)
-        }
-
-        embed.setDescription(array.join("\n"))
-
-      }
-    }
-
-      
-      embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
-
-      
-      embed.setAuthor(member.user.tag, member.user.displayAvatarURL({ dynamic: true }))
-
-      
-      if (member.nickname !== null) embed.addField("Nickname", member.nickname)
-      embed.addField("Join Date", moment(member.user.joinedAt).format("LLLL"))
-        .addField(" Create Date", moment(member.user.createdAt).format("LLLL"))
-        .addField("Other Information", `ID: \`${member.user.id}\`\nDiscriminator: ${member.user.discriminator}\nBot: ${member.user.bot}\nDeleted User: ${member.deleted}`)
-        .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
-        .setFooter(member.user.presence.status)
-
-
-
-      return message.channel.send(embed).catch(err => {
-        return message.channel.send("Error : " + err)
-      
-      })}})
- 
