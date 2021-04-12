@@ -178,21 +178,6 @@ function delay(delayInms) {
  });
 }
 //////////////
-client.on("message", message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(PREFIX)) return;
-  let command = message.content.split(" ")[0];
-  command = command.slice(PREFIX.length);
-  let args = message.content.split(" ").slice(1);
-  if (command == "say") {
-    if (!message.member.hasPermission("ADMINISTRATOR"))
-      return message.channel.send(
-        "ADMINISTRATOR ليس لديك صلاحيات rolling_eyes"
-      );
-    message.channel.send("" + args.join(" "));
-    message.delete();
-  }
-});
 //////////
 client.on("message", message => {
   if (message.content.toLowerCase() === PREFIX + "roles") {
@@ -245,7 +230,7 @@ client.on("message", async message => {
       SEND_MESSAGES: false
     });
     const lock = new Discord.MessageEmbed()
-      .setColor("RANDOM")
+      .setColor("FF0000")
       .setDescription(
         `<a:emoji_3:784873566428332033>| Locked Channel
 Channel Name : <#${message.channel.id}>
@@ -258,4 +243,21 @@ Locked By : <@${message.author.id}>
   }
 });
 //////////
-///////
+if(message.content.startsWith(`${prefix}about`)){
+    //define saymsg
+    const saymsg = message.content.slice(Number(prefix.length) + 5)
+    //define embed
+     message.react("<a<a:setting:813404135181385759>813404135181385759>").catch(console.error);
+    const embed = new Discord.MessageEmbed()
+    .setColor("FF0000")
+    .setFooter("LOCK")
+    .setThumbnail(message.author.avatarURL({dynamic: "true"}))
+      .addField('Servers', `\`${client.guilds.cache.size}\``, true)
+      .addField('Channels', `\`${client.channels.cache.size}\``, true)
+      .addField('Users', `\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\``, true)
+      .addField('My Name' , `\`${client.user.tag}\`` , true)
+      .addField('My ID' , `\`${client.user.id}\`` , true)
+      .addField('My Ping' , `\`${client.ws.ping}\`` , true)
+    //send the Message
+    message.author.send(embed)
+  }
