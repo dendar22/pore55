@@ -115,16 +115,16 @@ Music 🎶
 - ${PREFIX}shuffle(mix)${PREFIX}-skip(s)
 - ${PREFIX}skipto(st)-${PREFIX}stop(sp)
 - ${PREFIX}volume(v)
-
+FUN COMANDS https://cdn.discordapp.com/emojis/779963428713529355.png
+- ${PREFIX}avatar - ${PREFIX}Lock
+- ${PREFIX}Roles - ${PREFIX}about 
 Others 🛡
 - ${PREFIX}help - ${PREFIX}ping
 - ${PREFIX}prefix -${PREFIX}uptime
-- ${PREFIX}lock - ${PREFIX}roles
--${PREFIX}avatar - 
 \`
 ** Links ** <a:emoji_6:827091544556568579>
-**[   SUPPORT  ](https://discord.gg/58RbVj9HtJ)** -  [   INVITE   ](https://discord.com/api/oauth2/authorize?client_id=828237426744623174&permissions=8&scope=bot) -
- [   VOTE   ]( https://top.gg/bot/784304843807391755)-  [   YOUTUBE  ](https://youtube.com/channel/UClugW3tNgw4lcsnfBtihxyw)`)
+**[   SUPPORT  ](https://discord.gg/8ZQWYbTjbz)** -  [   INVITE   ](https://discord.com/api/oauth2/authorize?client_id=829043840714407936&permissions=8&scope=bot) -
+
     //delete the Command
   //////  message.delete({timeout: 300})
     //send the Message
